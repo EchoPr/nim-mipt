@@ -28,8 +28,8 @@ def start_game_loop(path_to_config: str = PATH_TO_CONFIG) -> None:
             user_step = NimStateChange(heap_id=heap_id, decrease=decrease)
             game_state = game_nim.make_steps(user_step)
 
-        except:
-            print('invalid input')
+        except Exception as ex:
+            print('invalid input', ex)
             continue
 
         print_game_state(game_state)

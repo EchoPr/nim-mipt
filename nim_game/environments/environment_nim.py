@@ -27,7 +27,7 @@ class EnvironmentNim:
 
     def __init__(self, heaps_amount: int) -> None:
         self._heaps_amount = validate_heaps_amount(heaps_amount)
-        self._heaps = [randint(1, 10) for _ in range(heaps_amount)]
+        self._heaps = [randint(STONE_AMOUNT_MIN, STONE_AMOUNT_MAX) for _ in range(heaps_amount)]
 
     def get_state(self) -> list[int]:
         """
@@ -55,7 +55,8 @@ class EnvironmentNim:
         ):
             raise ValueError(
                 "NimStateChanges.heap_id must be "
-                "in diapason from 0 to heaps_amount"
+                "in diapason from 1 to heaps_amount"
+                f"{state_change.heap_id, self._heaps_amount}"
             )
 
         if (
@@ -65,4 +66,6 @@ class EnvironmentNim:
             raise ValueError(
                 "NimStateChanges.decrease must be in diapason from 1 "
                 "to number of stones in current heap"
+                f"{state_change.decrease, state_change.heap_id, self._heaps[state_change.heap_id]}\n"
+                f"{self.get_state()}"
             )

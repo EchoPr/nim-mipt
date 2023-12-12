@@ -36,12 +36,12 @@ class GameNim:
         :param player_step: изменение состояния кучек игроком
         """
 
-        game_state = GameState()
         opponent_step = None
 
         self._environment.change_state(player_step)
         if not self.is_game_finished():
             opponent_step = self._agent.make_step(self.heaps_state)
+            self._environment.change_state(opponent_step)
 
         game_state = GameState(
             opponent_step=opponent_step,

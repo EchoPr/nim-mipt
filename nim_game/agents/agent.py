@@ -71,7 +71,7 @@ class Agent:
                 state_curr[i] += j
 
         return NimStateChange(
-            heap_id=imax,
+            heap_id=imax + 1,
             decrease=max_
         )
 
@@ -86,7 +86,7 @@ class Agent:
         things_num = randint(1, state_curr[heap_num])
 
         return NimStateChange(
-            heap_id=heap_num,
+            heap_id=heap_num + 1,
             decrease=things_num
         )
 
